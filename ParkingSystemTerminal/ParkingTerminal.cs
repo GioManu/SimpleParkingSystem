@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ParkingSystemTerminal {
@@ -17,21 +18,28 @@ namespace ParkingSystemTerminal {
 
         private DateListener dateChecker;
 
+        private ModeForm modeForm;
+
+        public bool allowshowdisplay = true;
+
         public Form1()
         {
             InitializeComponent();
             scanner = new Scanner(this, button1);
             dateChecker = new DateListener(10000);
             dateChecker.start();
-            GetMode();
+
+            this.modeForm = new ModeForm(this);
+            this.GetMode();
         }
 
         private void PrintTicket_Click(object sender, EventArgs e)
         {
-            var isValid = CheckInput(CarNum, (el) => el.Length >= 5);
+            var isValid = CheckInput(CarNum, (el) => el.Length >= 3);
             if (isValid)
             {
-                //TODO: sendToPrinter
+                BarCode barcode = new BarCode(CarNum.Text, DateTime.Now);
+                Printer.SendToPrint(barcode);
             }
         }
 
@@ -129,38 +137,61 @@ namespace ParkingSystemTerminal {
             scanText.Text = String.Empty;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void GetMode()
+        protected override void SetVisibleCore(bool value)
         {
-            if (!File.Exists(appSettings.Default.ModeFile))
+            base.SetVisibleCore(allowshowdisplay ? value : allowshowdisplay);
+        }
+
+        public void setMode(int mode)
+        {
+            if (mode.Equals(0))
             {
-                // Open Form and ask
+                this.PrintContainer.Visible = true;
             }
             else
             {
-                try
-                {   // Open the text file using a stream reader.
-                    using (StreamReader sr = new StreamReader(appSettings.Default.ModeFile))
-                    {
-                        String line = sr.ReadLine();
-                        MessageBox.Show(line);
-                    }
-                }
-                catch (IOException e)
-                {
-                    MessageBox.Show(e.Message);
-                }
+                this.panel1.Visible = true;
             }
 
+        }
+        public void GetMode()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader("C:\\ParkMode.ini"))
+                {
+                    String line = sr.ReadLine();
+                    int mode;
+                    bool readMode = Int32.TryParse(line, out mode);
+                    if (readMode)
+                    {
+                        if (mode.Equals(0) || mode.Equals(1))
+                        {
+                            this.setMode(mode);
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.allowshowdisplay = false;
+                this.modeForm.Show();
+            }
         }
     }
 }

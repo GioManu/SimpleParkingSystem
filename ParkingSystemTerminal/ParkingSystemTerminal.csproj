@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.6\lib\net35\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,10 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\BarCode.cs" />
     <Compile Include="Helpers\DateListener.cs" />
     <Compile Include="Helpers\DateTimeChanger.cs" />
     <Compile Include="Helpers\IListUpdater.cs" />
+    <Compile Include="Helpers\Printer.cs" />
     <Compile Include="Helpers\Scanner.cs" />
+    <Compile Include="ModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModeForm.Designer.cs">
+      <DependentUpon>ModeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ParkingTerminal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +75,9 @@
     <EmbeddedResource Include="Helpers\Scanner.resx">
       <DependentUpon>Scanner.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModeForm.resx">
+      <DependentUpon>ModeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ParkingTerminal.resx">
       <DependentUpon>ParkingTerminal.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +92,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

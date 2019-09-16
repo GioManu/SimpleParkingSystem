@@ -31,5 +31,41 @@ namespace ParkingSystemTerminal {
                 return ((string)(this["ModeFile"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int QRCodeSize {
+            get {
+                return ((int)(this["QRCodeSize"]));
+            }
+            set {
+                this["QRCodeSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int PrinterPageSizeH {
+            get {
+                return ((int)(this["PrinterPageSizeH"]));
+            }
+            set {
+                this["PrinterPageSizeH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int PrinterPageSizeW {
+            get {
+                return ((int)(this["PrinterPageSizeW"]));
+            }
+            set {
+                this["PrinterPageSizeW"] = value;
+            }
+        }
     }
 }
