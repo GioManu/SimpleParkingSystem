@@ -25,7 +25,7 @@ namespace ParkingSystemTerminal {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\ParkMode.ini")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\ParkMode.ini")]
         public string ModeFile {
             get {
                 return ((string)(this["ModeFile"]));
@@ -46,25 +46,13 @@ namespace ParkingSystemTerminal {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
-        public int PrinterPageSizeH {
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Ticket.jpg")]
+        public string TicketFile {
             get {
-                return ((int)(this["PrinterPageSizeH"]));
+                return ((string)(this["TicketFile"]));
             }
             set {
-                this["PrinterPageSizeH"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
-        public int PrinterPageSizeW {
-            get {
-                return ((int)(this["PrinterPageSizeW"]));
-            }
-            set {
-                this["PrinterPageSizeW"] = value;
+                this["TicketFile"] = value;
             }
         }
     }

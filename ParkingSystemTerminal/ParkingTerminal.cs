@@ -164,7 +164,7 @@ namespace ParkingSystemTerminal {
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\ParkMode.ini"))
+                using (StreamReader sr = new StreamReader(appSettings.Default.ModeFile))
                 {
                     String line = sr.ReadLine();
                     int mode;

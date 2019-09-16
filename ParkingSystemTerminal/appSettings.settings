@@ -3,16 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="ModeFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\ParkMode.ini</Value>
+      <Value Profile="(Default)">D:\ParkMode.ini</Value>
     </Setting>
     <Setting Name="QRCodeSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
-    <Setting Name="PrinterPageSizeH" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">200</Value>
-    </Setting>
-    <Setting Name="PrinterPageSizeW" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">200</Value>
+    <Setting Name="TicketFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Ticket.jpg</Value>
     </Setting>
   </Settings>
 </SettingsFile>
