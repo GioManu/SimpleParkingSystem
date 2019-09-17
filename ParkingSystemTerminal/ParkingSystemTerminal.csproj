@@ -49,7 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\BarCode.cs" />
+    <Compile Include="Helpers\Ticket.cs" />
     <Compile Include="Helpers\DateListener.cs" />
     <Compile Include="Helpers\DateTimeChanger.cs" />
     <Compile Include="Helpers\IListUpdater.cs" />

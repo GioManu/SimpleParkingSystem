@@ -38,7 +38,7 @@ namespace ParkingSystemTerminal {
             var isValid = CheckInput(CarNum, (el) => el.Length >= 3);
             if (isValid)
             {
-                BarCode barcode = new BarCode(CarNum.Text, DateTime.Now);
+                Ticket barcode = new Ticket(CarNum.Text, DateTime.Now);
                 Printer.SendToPrint(barcode);
             }
         }

@@ -55,5 +55,29 @@ namespace ParkingSystemTerminal {
                 this["TicketFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("d/MM/yyyy HH:mm")]
+        public string TicketDateFormat {
+            get {
+                return ((string)(this["TicketDateFormat"]));
+            }
+            set {
+                this["TicketDateFormat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HEADER")]
+        public string Header {
+            get {
+                return ((string)(this["Header"]));
+            }
+            set {
+                this["Header"] = value;
+            }
+        }
     }
 }

@@ -34,19 +34,19 @@
             this.CarNumLabel = new System.Windows.Forms.Label();
             this.validTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Tariff = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CostSum = new System.Windows.Forms.TextBox();
+            this.EndDate = new System.Windows.Forms.TextBox();
+            this.StartDate = new System.Windows.Forms.TextBox();
+            this.CarInput = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.myList = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.scanText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.CarInput = new System.Windows.Forms.TextBox();
-            this.StartDate = new System.Windows.Forms.TextBox();
-            this.EndDate = new System.Windows.Forms.TextBox();
-            this.CostSum = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Tariff = new System.Windows.Forms.TextBox();
             this.PrintContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.PrintContainer.Controls.Add(this.PrintTicket);
             this.PrintContainer.Controls.Add(this.CarNum);
             this.PrintContainer.Controls.Add(this.CarNumLabel);
-            this.PrintContainer.Location = new System.Drawing.Point(9, 10);
+            this.PrintContainer.Location = new System.Drawing.Point(11, 11);
             this.PrintContainer.Margin = new System.Windows.Forms.Padding(2);
             this.PrintContainer.Name = "PrintContainer";
             this.PrintContainer.Size = new System.Drawing.Size(293, 204);
@@ -125,6 +125,85 @@
             this.panel1.Visible = false;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // Tariff
+            // 
+            this.Tariff.Location = new System.Drawing.Point(192, 270);
+            this.Tariff.Name = "Tariff";
+            this.Tariff.Size = new System.Drawing.Size(100, 20);
+            this.Tariff.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(8, 264);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 33);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "ტარიფი";
+            // 
+            // CostSum
+            // 
+            this.CostSum.Location = new System.Drawing.Point(192, 244);
+            this.CostSum.Name = "CostSum";
+            this.CostSum.Size = new System.Drawing.Size(100, 20);
+            this.CostSum.TabIndex = 16;
+            // 
+            // EndDate
+            // 
+            this.EndDate.Location = new System.Drawing.Point(192, 211);
+            this.EndDate.Name = "EndDate";
+            this.EndDate.Size = new System.Drawing.Size(100, 20);
+            this.EndDate.TabIndex = 15;
+            // 
+            // StartDate
+            // 
+            this.StartDate.Location = new System.Drawing.Point(192, 178);
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Size = new System.Drawing.Size(100, 20);
+            this.StartDate.TabIndex = 14;
+            // 
+            // CarInput
+            // 
+            this.CarInput.Location = new System.Drawing.Point(191, 145);
+            this.CarInput.Name = "CarInput";
+            this.CarInput.Size = new System.Drawing.Size(100, 20);
+            this.CarInput.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 231);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 33);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "თანხა";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 198);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 33);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "გავიდა";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 165);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 33);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "შემოვიდა";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -170,85 +249,6 @@
             this.scanText.Size = new System.Drawing.Size(258, 44);
             this.scanText.TabIndex = 5;
             this.scanText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 165);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 33);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "შემოვიდა";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 198);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 33);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "გავიდა";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 231);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 33);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "თანხა";
-            // 
-            // CarInput
-            // 
-            this.CarInput.Location = new System.Drawing.Point(191, 145);
-            this.CarInput.Name = "CarInput";
-            this.CarInput.Size = new System.Drawing.Size(100, 20);
-            this.CarInput.TabIndex = 13;
-            // 
-            // StartDate
-            // 
-            this.StartDate.Location = new System.Drawing.Point(192, 178);
-            this.StartDate.Name = "StartDate";
-            this.StartDate.Size = new System.Drawing.Size(100, 20);
-            this.StartDate.TabIndex = 14;
-            // 
-            // EndDate
-            // 
-            this.EndDate.Location = new System.Drawing.Point(192, 211);
-            this.EndDate.Name = "EndDate";
-            this.EndDate.Size = new System.Drawing.Size(100, 20);
-            this.EndDate.TabIndex = 15;
-            // 
-            // CostSum
-            // 
-            this.CostSum.Location = new System.Drawing.Point(192, 244);
-            this.CostSum.Name = "CostSum";
-            this.CostSum.Size = new System.Drawing.Size(100, 20);
-            this.CostSum.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 264);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 33);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "ტარიფი";
-            // 
-            // Tariff
-            // 
-            this.Tariff.Location = new System.Drawing.Point(192, 270);
-            this.Tariff.Name = "Tariff";
-            this.Tariff.Size = new System.Drawing.Size(100, 20);
-            this.Tariff.TabIndex = 18;
             // 
             // Form1
             // 

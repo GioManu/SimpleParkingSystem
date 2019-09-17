@@ -11,5 +11,11 @@
     <Setting Name="TicketFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\Ticket.jpg</Value>
     </Setting>
+    <Setting Name="TicketDateFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">d/MM/yyyy HH:mm</Value>
+    </Setting>
+    <Setting Name="Header" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HEADER</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
