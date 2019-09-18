@@ -25,6 +25,8 @@ namespace ParkingSystemTerminal {
         public double tariff;
         public string ticketHeader;
 
+        public Settings settingsForm;
+
         public Form1()
         {
             InitializeComponent();
@@ -259,8 +261,16 @@ namespace ParkingSystemTerminal {
 
         private void SettingsBtn_Click(object sender, EventArgs e)
         {
-            Settings setForm = new Settings(this);
-            setForm.Show();
+            if (settingsForm is null)
+            {
+                settingsForm = new Settings(this);
+                settingsForm.Show();
+            }
+            else
+            {
+                settingsForm.Focus();
+            }
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
