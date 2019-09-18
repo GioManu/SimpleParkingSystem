@@ -235,7 +235,6 @@
             this.SettingsBtn.Size = new System.Drawing.Size(73, 48);
             this.SettingsBtn.TabIndex = 23;
             this.SettingsBtn.UseVisualStyleBackColor = true;
-            this.SettingsBtn.Visible = false;
             this.SettingsBtn.Click += new System.EventHandler(this.SettingsBtn_Click);
             // 
             // Form1

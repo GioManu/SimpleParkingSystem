@@ -160,13 +160,11 @@ namespace ParkingSystemTerminal {
             {
                 this.panel1.Visible = false;
                 this.PrintContainer.Visible = true;
-                this.SettingsBtn.Visible = false;
             }
             else
             {
                 this.PrintContainer.Visible = false;
                 this.panel1.Visible = true;
-                this.SettingsBtn.Visible = true;
             }
 
         }
