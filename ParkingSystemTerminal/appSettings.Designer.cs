@@ -79,5 +79,17 @@ namespace ParkingSystemTerminal {
                 this["Header"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double Tariff {
+            get {
+                return ((double)(this["Tariff"]));
+            }
+            set {
+                this["Tariff"] = value;
+            }
+        }
     }
 }

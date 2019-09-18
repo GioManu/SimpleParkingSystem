@@ -6,11 +6,12 @@ using System.Threading;
 using System.Windows.Forms;
 
 namespace ParkingSystemTerminal {
-    public partial class Form1 : Form ,IListUpdater{
+    public partial class Form1 : Form {
         private int curVal = 0;
         private Control curControl;
         
         private bool validProcessing =false;
+
         public bool isScanning = false;
 
         private Scanner scanner;
@@ -19,8 +20,10 @@ namespace ParkingSystemTerminal {
         private DateListener dateChecker;
 
         private ModeForm modeForm;
-
+        private Settings settingsForm;
         public bool allowshowdisplay = true;
+
+        private double tariff = appSettings.Default.Tariff;
 
         public Form1()
         {
@@ -30,6 +33,10 @@ namespace ParkingSystemTerminal {
             dateChecker.start();
 
             this.modeForm = new ModeForm(this);
+            this.settingsForm = new Settings(this);
+
+            //this.settingsForm.readSettings();
+
             this.GetMode();
         }
 
@@ -38,8 +45,8 @@ namespace ParkingSystemTerminal {
             var isValid = CheckInput(CarNum, (el) => el.Length >= 3);
             if (isValid)
             {
-                Ticket barcode = new Ticket(CarNum.Text, DateTime.Now);
-                Printer.SendToPrint(barcode);
+                Ticket ticket = new Ticket(CarNum.Text, DateTime.Now);
+                Printer.SendToPrint(ticket);
             }
         }
 
@@ -81,19 +88,9 @@ namespace ParkingSystemTerminal {
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.scanner.timer.Enabled)
-            {
-                this.scanner.stop();
-            }
-            else
-            {
-                this.scanner.start();
-            }
-        }
-
-        public void updateList(string text)
-        {
-            this.myList.Items.Add(text);
+            this.clearInputs();
+            if (this.scanner.timer.Enabled) this.scanner.stop();
+            else this.scanner.start();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -108,22 +105,38 @@ namespace ParkingSystemTerminal {
                 this.Invoke(new EnableDelegate(checkInput));
                 return;
             }
-
-            focusEfect(this.scanText);
-
+            this.scanText.Focus();
+            focusEfect(this.scanText, Color.FromArgb(255, 128, 128));
             if (this.scanText.Text.Length > 0)
             {
-                this.updateList(scanText.Text);
+                focusEfect(this.scanText, Color.FromArgb(128, 255,128));
+                try
+                {
+                    Int32 totalMinutes = Convert.ToInt32(this.scanText.Text);
+                    double res = Calculator.CalculateDiff(totalMinutes);
+                    this.ShowResult(res);
+                    this.scanner.stop();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Print(ex.Message);
+                }
+                finally
+                {
+                    this.scanText.Clear();
+                }
+                
             }
+
         }
 
-        public void focusEfect(Control ctrl)
+        public void focusEfect(Control ctrl,Color state)
         {
             ctrl.Focus();
             
             if (ctrl.BackColor == Color.White)
             {
-                ctrl.BackColor = Color.FromArgb(255, 128, 128);
+                ctrl.BackColor = state;
             }
             else
             {
@@ -152,11 +165,15 @@ namespace ParkingSystemTerminal {
         {
             if (mode.Equals(0))
             {
+                this.panel1.Visible = false;
                 this.PrintContainer.Visible = true;
+                this.SettingsBtn.Visible = false;
             }
             else
             {
+                this.PrintContainer.Visible = false;
                 this.panel1.Visible = true;
+                this.SettingsBtn.Visible = true;
             }
 
         }
@@ -192,6 +209,43 @@ namespace ParkingSystemTerminal {
                 this.allowshowdisplay = false;
                 this.modeForm.Show();
             }
+        }
+        
+        private void ShowResult(double mins)
+        {
+            int tar = 1;
+            TimeSpan tmp = TimeSpan.FromMinutes(mins);
+            string workHours = string.Format("{0:00}:{1:00}", (int)tmp.TotalHours, tmp.Minutes);
+
+            this.SpentHours.Text = workHours;
+
+            this.Tariff.Text = $"{tar.ToString()} ლ";
+            this.CostSum.Text = $"{(Math.Round((mins / 60), 2, MidpointRounding.ToEven) * tar).ToString()} ლ";
+        }
+
+        private void clearInputs()
+        {
+            this.scanText.Clear();
+            this.SpentHours.Clear();
+            this.Tariff.Clear();
+            this.CostSum.Clear();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.modeForm = new ModeForm(this);
+            this.modeForm.Show();
+        }
+
+        private void SettingsBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

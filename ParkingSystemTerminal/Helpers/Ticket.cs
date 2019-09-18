@@ -12,11 +12,13 @@ namespace ParkingSystemTerminal.Helpers {
         public string CarNum { get; set; }
         public DateTime StartDate { get; set; }
         public Bitmap QRCode { get; set; }
+        public Int32 startDateInMinutes { get; set; }
 
         public Ticket(string carnum,DateTime startdate)
         {
             this.CarNum = carnum;
             this.StartDate = startdate;
+            this.startDateInMinutes = Convert.ToInt32(startdate.Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalMinutes);
             this.QRCode = this.GenerateQRCode();
         }
 
@@ -28,12 +30,11 @@ namespace ParkingSystemTerminal.Helpers {
         private Bitmap GenerateQRCode()
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(this.StartDate.ToString(appSettings.Default.TicketDateFormat), QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(this.startDateInMinutes.ToString(), QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
 
             Bitmap qrCodeImage = qrCode.GetGraphic(appSettings.Default.QRCodeSize);
-
-            //qrCodeImage.Save("D:\\QRCODE.jpg", ImageFormat.Jpeg);
+            
             return qrCodeImage;
         }
 

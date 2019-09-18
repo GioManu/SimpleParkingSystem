@@ -23,6 +23,7 @@ namespace ParkingSystemTerminal.Helpers {
                 e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
                 e.Graphics.DrawImage(TicketImg, 0, 0);
             };
+            
             pd.Print();
         }
 
@@ -47,10 +48,10 @@ namespace ParkingSystemTerminal.Helpers {
                 Rectangle rc;
                 g.Clear(Color.White);
 
-                //g.SmoothingMode = SmoothingMode.HighQuality;
-                //g.InterpolationMode = InterpolationMode.HighQualityBilinear;
-                //g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBilinear;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
                 rc = new Rectangle(x, y, 302, Convert.ToInt32(HeaderFont.Size) + 30);
                 g.FillRectangle(Brushes.White, rc);
                 g.DrawString(appSettings.Default.Header, HeaderFont, Brushes.Black, rc);
