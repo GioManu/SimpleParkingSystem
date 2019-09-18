@@ -222,7 +222,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 48);
             this.button3.TabIndex = 22;
-            this.button3.Text = "ტერმინალის გადართვა";
+            this.button3.Text = "ტერმინალის შეცვლა";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -248,8 +248,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PrintContainer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parking Terminal";

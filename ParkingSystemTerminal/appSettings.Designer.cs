@@ -91,5 +91,17 @@ namespace ParkingSystemTerminal {
                 this["Tariff"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\ParkSettings.ini")]
+        public string SettingsFile {
+            get {
+                return ((string)(this["SettingsFile"]));
+            }
+            set {
+                this["SettingsFile"] = value;
+            }
+        }
     }
 }

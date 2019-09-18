@@ -20,10 +20,10 @@ namespace ParkingSystemTerminal {
         private DateListener dateChecker;
 
         private ModeForm modeForm;
-        private Settings settingsForm;
         public bool allowshowdisplay = true;
 
-        private double tariff = appSettings.Default.Tariff;
+        public double tariff;
+        public string ticketHeader;
 
         public Form1()
         {
@@ -31,13 +31,10 @@ namespace ParkingSystemTerminal {
             scanner = new Scanner(this, button1);
             dateChecker = new DateListener(10000);
             dateChecker.start();
-
+            this.readSettings();
             this.modeForm = new ModeForm(this);
-            this.settingsForm = new Settings(this);
-
-            //this.settingsForm.readSettings();
-
             this.GetMode();
+            
         }
 
         private void PrintTicket_Click(object sender, EventArgs e)
@@ -45,7 +42,7 @@ namespace ParkingSystemTerminal {
             var isValid = CheckInput(CarNum, (el) => el.Length >= 3);
             if (isValid)
             {
-                Ticket ticket = new Ticket(CarNum.Text, DateTime.Now);
+                Ticket ticket = new Ticket(CarNum.Text, DateTime.Now,this.ticketHeader);
                 Printer.SendToPrint(ticket);
             }
         }
@@ -92,11 +89,7 @@ namespace ParkingSystemTerminal {
             if (this.scanner.timer.Enabled) this.scanner.stop();
             else this.scanner.start();
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         public void checkInput()
         {
@@ -213,14 +206,15 @@ namespace ParkingSystemTerminal {
         
         private void ShowResult(double mins)
         {
-            int tar = 1;
             TimeSpan tmp = TimeSpan.FromMinutes(mins);
+            double minsInHours = Math.Round((mins / 60), 2);
+
             string workHours = string.Format("{0:00}:{1:00}", (int)tmp.TotalHours, tmp.Minutes);
 
             this.SpentHours.Text = workHours;
 
-            this.Tariff.Text = $"{tar.ToString()} ლ";
-            this.CostSum.Text = $"{(Math.Round((mins / 60), 2, MidpointRounding.ToEven) * tar).ToString()} ლ";
+            this.Tariff.Text = $"{this.tariff.ToString()} ლ";
+            this.CostSum.Text = $"{(Math.Round(minsInHours * this.tariff,2,MidpointRounding.ToEven)).ToString()} ლ";
         }
 
         private void clearInputs()
@@ -229,6 +223,25 @@ namespace ParkingSystemTerminal {
             this.SpentHours.Clear();
             this.Tariff.Clear();
             this.CostSum.Clear();
+
+        }
+
+        public void readSettings()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(appSettings.Default.SettingsFile))
+                {
+                    String line = sr.ReadLine();
+                    this.tariff = Convert.ToDouble(line);
+                    line = sr.ReadLine();
+                    this.ticketHeader = line.Trim();
+                }
+            }
+            catch(Exception ex)
+            {
+                Settings.SaveSettings("1", " ");
+            }
 
         }
 
@@ -244,6 +257,12 @@ namespace ParkingSystemTerminal {
         }
 
         private void SettingsBtn_Click(object sender, EventArgs e)
+        {
+            Settings setForm = new Settings(this);
+            setForm.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

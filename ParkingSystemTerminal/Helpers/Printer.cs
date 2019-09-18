@@ -39,7 +39,7 @@ namespace ParkingSystemTerminal.Helpers {
             Font LabelFont = new Font("Arial", 16, FontStyle.Regular);
             Font DataFont = new Font("Arial", 14, FontStyle.Bold);
 
-            x = Convert.ToInt32(bitWidth / 2 - (HeaderFont.SizeInPoints * appSettings.Default.Header.Length / 2)) - 20; 
+            x = Convert.ToInt32(bitWidth / 2 - (HeaderFont.SizeInPoints * ticket.Header.Length / 2)) - 20; 
 
             Bitmap bmp = new Bitmap(bitWidth, bitHeight);
 
@@ -54,7 +54,7 @@ namespace ParkingSystemTerminal.Helpers {
 
                 rc = new Rectangle(x, y, 302, Convert.ToInt32(HeaderFont.Size) + 30);
                 g.FillRectangle(Brushes.White, rc);
-                g.DrawString(appSettings.Default.Header, HeaderFont, Brushes.Black, rc);
+                g.DrawString(ticket.Header, HeaderFont, Brushes.Black, rc);
 
                 y += Convert.ToInt32(HeaderFont.Size) + 20;
                 x = 50;

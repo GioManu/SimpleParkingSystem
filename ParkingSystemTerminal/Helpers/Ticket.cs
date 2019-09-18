@@ -13,11 +13,13 @@ namespace ParkingSystemTerminal.Helpers {
         public DateTime StartDate { get; set; }
         public Bitmap QRCode { get; set; }
         public Int32 startDateInMinutes { get; set; }
+        public string Header { get; set; }
 
-        public Ticket(string carnum,DateTime startdate)
+        public Ticket(string carnum,DateTime startdate,string header)
         {
             this.CarNum = carnum;
             this.StartDate = startdate;
+            this.Header = header;
             this.startDateInMinutes = Convert.ToInt32(startdate.Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalMinutes);
             this.QRCode = this.GenerateQRCode();
         }

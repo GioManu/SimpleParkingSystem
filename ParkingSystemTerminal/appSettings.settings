@@ -20,5 +20,8 @@
     <Setting Name="Tariff" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="SettingsFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\ParkSettings.ini</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
