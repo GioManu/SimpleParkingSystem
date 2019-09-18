@@ -27,6 +27,7 @@ namespace ParkingSystemTerminal.Helpers {
             pd.Print();
         }
 
+
         public static Image GenerateImage(Ticket ticket)
         {
             int x = 0;

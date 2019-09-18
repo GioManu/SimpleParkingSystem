@@ -107,7 +107,7 @@ namespace ParkingSystemTerminal {
                 {
                     Int32 totalMinutes = Convert.ToInt32(this.scanText.Text);
                     double res = Calculator.CalculateDiff(totalMinutes);
-                    this.ShowResult(res);
+                    this.ShowResult(res,totalMinutes);
                     this.scanner.stop();
                 }
                 catch (Exception ex)
@@ -202,15 +202,18 @@ namespace ParkingSystemTerminal {
             }
         }
         
-        private void ShowResult(double mins)
+        private void ShowResult(double mins,Int32 totalMinutes)
         {
             TimeSpan tmp = TimeSpan.FromMinutes(mins);
+            DateTime stDate = new DateTime(1970,1,1).AddMinutes(totalMinutes);
+
             double minsInHours = Math.Round((mins / 60), 2);
 
-            string workHours = string.Format("{0:00}:{1:00}", (int)tmp.TotalHours, tmp.Minutes);
-
+            //string workHours = string.Format("{0:00}:{1:00}", (int)tmp.TotalHours, tmp.Minutes);
+            string workHours = tmp.TotalMinutes.ToString();
+            this.ticketDate.Text = stDate.ToString("dd/MM/yyyy HH:mm");
+            this.todayDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             this.SpentHours.Text = workHours;
-
             this.Tariff.Text = $"{this.tariff.ToString()} ლ";
             this.CostSum.Text = $"{(Math.Round(minsInHours * this.tariff,2,MidpointRounding.ToEven)).ToString()} ლ";
         }

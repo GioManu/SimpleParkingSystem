@@ -45,6 +45,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SettingsBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ticketDate = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.todayDate = new System.Windows.Forms.TextBox();
             this.PrintContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +106,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.todayDate);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.ticketDate);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.SpentHours);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Tariff);
@@ -120,38 +128,46 @@
             // 
             // SpentHours
             // 
+            this.SpentHours.BackColor = System.Drawing.Color.White;
+            this.SpentHours.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SpentHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpentHours.Location = new System.Drawing.Point(301, 73);
+            this.SpentHours.ForeColor = System.Drawing.Color.DarkRed;
+            this.SpentHours.Location = new System.Drawing.Point(330, 189);
             this.SpentHours.Name = "SpentHours";
             this.SpentHours.ReadOnly = true;
-            this.SpentHours.Size = new System.Drawing.Size(102, 38);
+            this.SpentHours.Size = new System.Drawing.Size(91, 38);
             this.SpentHours.TabIndex = 20;
+            this.SpentHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(295, 37);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(240, 158);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 33);
+            this.label1.Size = new System.Drawing.Size(181, 29);
             this.label1.TabIndex = 19;
-            this.label1.Text = "საათი";
+            this.label1.Text = "სხვაობა წუთებში";
             // 
             // Tariff
             // 
+            this.Tariff.BackColor = System.Drawing.Color.White;
+            this.Tariff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Tariff.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tariff.Location = new System.Drawing.Point(301, 150);
+            this.Tariff.ForeColor = System.Drawing.Color.DarkRed;
+            this.Tariff.Location = new System.Drawing.Point(109, 263);
             this.Tariff.Name = "Tariff";
             this.Tariff.ReadOnly = true;
-            this.Tariff.Size = new System.Drawing.Size(102, 38);
+            this.Tariff.Size = new System.Drawing.Size(73, 38);
             this.Tariff.TabIndex = 18;
+            this.Tariff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(295, 114);
+            this.label5.Location = new System.Drawing.Point(9, 263);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 33);
@@ -160,19 +176,23 @@
             // 
             // CostSum
             // 
+            this.CostSum.BackColor = System.Drawing.Color.White;
+            this.CostSum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CostSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CostSum.Location = new System.Drawing.Point(301, 227);
+            this.CostSum.ForeColor = System.Drawing.Color.DarkRed;
+            this.CostSum.Location = new System.Drawing.Point(320, 263);
             this.CostSum.Name = "CostSum";
             this.CostSum.ReadOnly = true;
             this.CostSum.Size = new System.Drawing.Size(102, 38);
             this.CostSum.TabIndex = 16;
+            this.CostSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.SkyBlue;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(24, 120);
+            this.button1.Location = new System.Drawing.Point(9, 64);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(213, 119);
@@ -184,7 +204,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(295, 191);
+            this.label4.Location = new System.Drawing.Point(241, 263);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 33);
@@ -197,7 +217,7 @@
             this.scanText.BackColor = System.Drawing.Color.White;
             this.scanText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.scanText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.scanText.Location = new System.Drawing.Point(24, 72);
+            this.scanText.Location = new System.Drawing.Point(9, 9);
             this.scanText.Margin = new System.Windows.Forms.Padding(2);
             this.scanText.Name = "scanText";
             this.scanText.Size = new System.Drawing.Size(213, 44);
@@ -237,11 +257,57 @@
             this.SettingsBtn.UseVisualStyleBackColor = true;
             this.SettingsBtn.Click += new System.EventHandler(this.SettingsBtn_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(251, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(171, 29);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "საწყისი თარიღი";
+            // 
+            // ticketDate
+            // 
+            this.ticketDate.BackColor = System.Drawing.Color.White;
+            this.ticketDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticketDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketDate.ForeColor = System.Drawing.Color.DarkRed;
+            this.ticketDate.Location = new System.Drawing.Point(245, 38);
+            this.ticketDate.Name = "ticketDate";
+            this.ticketDate.ReadOnly = true;
+            this.ticketDate.Size = new System.Drawing.Size(177, 31);
+            this.ticketDate.TabIndex = 22;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(228, 79);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(202, 29);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "მიმდინარე თარიღი";
+            // 
+            // todayDate
+            // 
+            this.todayDate.BackColor = System.Drawing.Color.White;
+            this.todayDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.todayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.todayDate.ForeColor = System.Drawing.Color.DarkRed;
+            this.todayDate.Location = new System.Drawing.Point(245, 111);
+            this.todayDate.Name = "todayDate";
+            this.todayDate.ReadOnly = true;
+            this.todayDate.Size = new System.Drawing.Size(176, 31);
+            this.todayDate.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 384);
+            this.ClientSize = new System.Drawing.Size(437, 384);
             this.Controls.Add(this.SettingsBtn);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -281,6 +347,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button SettingsBtn;
+        private System.Windows.Forms.TextBox todayDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox ticketDate;
+        private System.Windows.Forms.Label label2;
     }
 }
 

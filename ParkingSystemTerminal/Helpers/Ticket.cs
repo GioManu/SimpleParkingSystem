@@ -22,6 +22,7 @@ namespace ParkingSystemTerminal.Helpers {
             this.Header = header;
             this.startDateInMinutes = Convert.ToInt32(startdate.Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalMinutes);
             this.QRCode = this.GenerateQRCode();
+            //this.QRCode = this.GenerateBarCode();
         }
 
         public override string ToString()
@@ -40,13 +41,13 @@ namespace ParkingSystemTerminal.Helpers {
             return qrCodeImage;
         }
 
-        private Image GenerateBarCode()
+        private Bitmap GenerateBarCode()
         {
             Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
 
-            var barcodeImage = barcode.Draw("2124978157", 50);
+            var barcodeImage = barcode.Draw(this.startDateInMinutes.ToString(), 50);
 
-            var resultImage = new Bitmap(barcodeImage.Width, barcodeImage.Height + 20);
+            Bitmap resultImage = new Bitmap(barcodeImage.Width, barcodeImage.Height + 20);
 
             using (var graphics = Graphics.FromImage(resultImage))
             using (var font = new Font("Consolas", 10))
@@ -59,7 +60,7 @@ namespace ParkingSystemTerminal.Helpers {
             {
                 graphics.Clear(Color.White);
                 graphics.DrawImage(barcodeImage, 0, 0);
-                graphics.DrawString("2124978157", font, brush, resultImage.Width / 2, resultImage.Height, format);
+                graphics.DrawString(this.startDateInMinutes.ToString(), font, brush, resultImage.Width / 2, resultImage.Height, format);
             }
 
             return resultImage;
