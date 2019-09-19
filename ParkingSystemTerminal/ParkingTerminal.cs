@@ -36,6 +36,7 @@ namespace ParkingSystemTerminal {
             this.readSettings();
             this.modeForm = new ModeForm(this);
             this.GetMode();
+            this.Tariff.KeyPress += this.Tariff_KeyPress;
             
         }
 
@@ -104,13 +105,11 @@ namespace ParkingSystemTerminal {
             focusEfect(this.scanText, Color.FromArgb(255, 128, 128));
             if (this.scanText.Text.Length > 0)
             {
-                focusEfect(this.scanText, Color.FromArgb(128, 255,128));
                 try
                 {
                     Int32 totalMinutes = Convert.ToInt32(this.scanText.Text);
                     double res = Calculator.CalculateDiff(totalMinutes);
-                    this.ShowResult(res,totalMinutes);
-                    this.scanner.stop();
+                    this.ShowResult(res, totalMinutes);
                 }
                 catch (Exception ex)
                 {
@@ -120,7 +119,7 @@ namespace ParkingSystemTerminal {
                 {
                     this.scanText.Clear();
                 }
-                
+
             }
 
         }
@@ -209,22 +208,28 @@ namespace ParkingSystemTerminal {
             TimeSpan tmp = TimeSpan.FromMinutes(mins);
             DateTime stDate = new DateTime(1970,1,1).AddMinutes(totalMinutes);
 
-            double minsInHours = Math.Round((mins / 60), 2);
+            if(DateTime.Now.Year - stDate.Year <= 1)
+            {
+                focusEfect(this.scanText, Color.FromArgb(128, 255, 128));
 
-            //string workHours = string.Format("{0:00}:{1:00}", (int)tmp.TotalHours, tmp.Minutes);
-            string workHours = tmp.TotalMinutes.ToString();
-            this.ticketDate.Text = stDate.ToString("dd/MM/yyyy HH:mm");
-            this.todayDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-            this.SpentHours.Text = workHours;
-            this.Tariff.Text = $"{this.tariff.ToString()} ლ";
-            this.CostSum.Text = $"{(Math.Round(minsInHours * this.tariff,2,MidpointRounding.ToEven)).ToString()} ლ";
+                double minsInHours = Math.Round((mins / 60), 2);
+                //string workHours = string.Format("{0:00}:{1:00}", (int)tmp.TotalHours, tmp.Minutes);
+                string workHours = tmp.TotalMinutes.ToString();
+                this.ticketDate.Text = stDate.ToString("dd/MM/yyyy HH:mm");
+                this.todayDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                this.SpentHours.Text = $"{workHours} წუთი";
+                this.CostSum.Text = $"{(Math.Round(minsInHours * this.tariff, 2, MidpointRounding.ToEven)).ToString()} ლ";
+                this.scanner.stop();
+            }
+
         }
 
         private void clearInputs()
         {
+            this.ticketDate.Clear();
+            this.todayDate.Clear();
             this.scanText.Clear();
             this.SpentHours.Clear();
-            this.Tariff.Clear();
             this.CostSum.Clear();
 
         }
@@ -237,6 +242,7 @@ namespace ParkingSystemTerminal {
                 {
                     String line = sr.ReadLine();
                     this.tariff = Convert.ToDouble(line);
+                    this.Tariff.Text = this.tariff.ToString();
                     line = sr.ReadLine();
                     this.ticketHeader = line.Trim();
                 }
@@ -273,9 +279,31 @@ namespace ParkingSystemTerminal {
             
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
+            if (this.Tariff.Text.Length > 0)
+            {
+                this.tariff = Convert.ToDouble(this.Tariff.Text);
+                Settings.SaveSettings(this.tariff.ToString(), this.ticketHeader);
+                this.readSettings();
 
+            }
         }
+
+        private void Tariff_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

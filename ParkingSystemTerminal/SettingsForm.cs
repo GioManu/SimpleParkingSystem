@@ -18,6 +18,16 @@ namespace ParkingSystemTerminal {
             this.form = parent;
             this.HeaderText.Text = this.form.ticketHeader;
             this.TariffText.Text = this.form.tariff.ToString();
+            if (this.form.panel1.Visible)
+            {
+                this.panel2.Visible = false;
+                this.panel1.Visible = true;
+            }
+            else
+            {
+                this.panel2.Visible = true;
+                this.panel1.Visible = false;
+            }
         }
 
         private void Settings_Load(object sender, EventArgs e)
@@ -47,16 +57,19 @@ namespace ParkingSystemTerminal {
 
                 SaveSettings(TariffText.Text, HeaderText.Text);
                 this.form.readSettings();
+                this.form.settingsForm = null;
                 this.Close();
             }
             else
             {
+                this.form.settingsForm = null;
                 this.Close();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.form.settingsForm = null;
             this.Close();
         }
     }

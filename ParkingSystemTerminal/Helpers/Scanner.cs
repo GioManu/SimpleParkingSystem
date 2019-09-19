@@ -22,7 +22,7 @@ namespace ParkingSystemTerminal.Helpers {
         public void start()
         {
             this.btn.BackColor = Color.FromArgb(128, 128, 255);
-            this.timer.Interval = 600;
+            this.timer.Interval = 500;
             this.timer.Enabled = true;
         }
 
