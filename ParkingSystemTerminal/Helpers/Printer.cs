@@ -96,7 +96,7 @@ namespace ParkingSystemTerminal.Helpers {
                 
             }
 
-            bmp.Save(appSettings.Default.TicketFile, ImageFormat.Jpeg);
+            bmp.Save($"{AppDomain.CurrentDomain.BaseDirectory}{appSettings.Default.TicketFile}", ImageFormat.Jpeg);
             return bmp;
         }
 

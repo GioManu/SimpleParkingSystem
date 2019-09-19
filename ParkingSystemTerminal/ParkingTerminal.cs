@@ -173,7 +173,7 @@ namespace ParkingSystemTerminal {
         {
             try
             {
-                using (StreamReader sr = new StreamReader(appSettings.Default.ModeFile))
+                using (StreamReader sr = new StreamReader($"{AppDomain.CurrentDomain.BaseDirectory}{appSettings.Default.ModeFile}"))
                 {
                     String line = sr.ReadLine();
                     int mode;
@@ -208,7 +208,7 @@ namespace ParkingSystemTerminal {
             TimeSpan tmp = TimeSpan.FromMinutes(mins);
             DateTime stDate = new DateTime(1970,1,1).AddMinutes(totalMinutes);
 
-            if(DateTime.Now.Year - stDate.Year <= 1)
+            if(!(Math.Abs(DateTime.Now.Year - stDate.Year) >=1))
             {
                 focusEfect(this.scanText, Color.FromArgb(128, 255, 128));
 
@@ -238,7 +238,7 @@ namespace ParkingSystemTerminal {
         {
             try
             {
-                using (StreamReader sr = new StreamReader(appSettings.Default.SettingsFile))
+                using (StreamReader sr = new StreamReader($"{AppDomain.CurrentDomain.BaseDirectory}{appSettings.Default.SettingsFile}"))
                 {
                     String line = sr.ReadLine();
                     this.tariff = Convert.ToDouble(line);
@@ -250,6 +250,9 @@ namespace ParkingSystemTerminal {
             catch(Exception ex)
             {
                 Settings.SaveSettings("1", " ");
+                this.tariff = 1;
+                this.ticketHeader = "";
+                this.Tariff.Text = "1";
             }
 
         }
@@ -305,5 +308,9 @@ namespace ParkingSystemTerminal {
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        
+        }
     }
 }

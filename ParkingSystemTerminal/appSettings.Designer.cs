@@ -25,7 +25,7 @@ namespace ParkingSystemTerminal {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\ParkMode.ini")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ParkMode.ini")]
         public string ModeFile {
             get {
                 return ((string)(this["ModeFile"]));
@@ -46,7 +46,7 @@ namespace ParkingSystemTerminal {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Ticket.jpg")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ticket.jpg")]
         public string TicketFile {
             get {
                 return ((string)(this["TicketFile"]));
@@ -94,7 +94,7 @@ namespace ParkingSystemTerminal {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\ParkSettings.ini")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ParkSettings.ini")]
         public string SettingsFile {
             get {
                 return ((string)(this["SettingsFile"]));

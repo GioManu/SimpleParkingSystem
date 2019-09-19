@@ -16,8 +16,6 @@ namespace ParkingSystemTerminal {
         {
             InitializeComponent();
             this.form = parent;
-            this.HeaderText.Text = this.form.ticketHeader;
-            this.TariffText.Text = this.form.tariff.ToString();
             if (this.form.panel1.Visible)
             {
                 this.panel2.Visible = false;
@@ -28,6 +26,8 @@ namespace ParkingSystemTerminal {
                 this.panel2.Visible = true;
                 this.panel1.Visible = false;
             }
+            this.HeaderText.Text = this.form.ticketHeader;
+            this.TariffText.Text = this.form.tariff.ToString();
         }
 
         private void Settings_Load(object sender, EventArgs e)
@@ -37,9 +37,9 @@ namespace ParkingSystemTerminal {
 
         public static void SaveSettings(string tariff,string header)
         {
-            File.Create(appSettings.Default.SettingsFile).Dispose();
+            File.Create($"{AppDomain.CurrentDomain.BaseDirectory}{appSettings.Default.SettingsFile}").Dispose();
 
-            using (var tw = new StreamWriter(appSettings.Default.SettingsFile, true))
+            using (var tw = new StreamWriter($"{AppDomain.CurrentDomain.BaseDirectory}{appSettings.Default.SettingsFile}", true))
             {
                 tw.WriteLine(tariff);
                 tw.WriteLine(header);
